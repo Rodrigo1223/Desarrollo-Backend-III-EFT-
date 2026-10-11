@@ -1,7 +1,9 @@
 package com.bancoxyz.banco;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,12 @@ public class BancoController {
     @Value("${example.message:Mensaje por defecto}")
     private String exampleMessage;
 
+    @Autowired
+    private BancoResilienciaService resilienciaService;
+
+    @Autowired
+    private TransferenciaProducer transferenciaProducer;
+
     @GetMapping("/health")
     public Map<String, String> health() {
         return Map.of("status", "Banco API running");
@@ -31,11 +39,17 @@ public class BancoController {
         return Map.of("message", exampleMessage);
     }
 
-    @Autowired
-    private BancoResilienciaService resilienciaService;
-
-    @Autowired
-    private TransferenciaProducer transferenciaProducer;
+    // Endpoint requerido por el BFF
+    @GetMapping("/cuenta/{cuentaId}")
+    public Map<String, Object> obtenerCuenta(@PathVariable String cuentaId) {
+        return Map.of(
+                "cuentaId", cuentaId,
+                "titular", "Cliente Banco XYZ",
+                "saldo", 1500000,
+                "estado", "ACTIVA",
+                "tipoCuenta", "CORRIENTE"
+        );
+    }
 
     @GetMapping("/seguro")
     public Map<String, String> seguro() {
@@ -44,9 +58,11 @@ public class BancoController {
         return Map.of("mensaje", "Acceso autorizado", "usuario", usuario);
     }
 
+    // Endpoint de prueba de Resiliencia real protegido con CircuitBreaker sobre Kafka
     @GetMapping("/resiliencia")
-    public Map<String, String> resiliencia(@RequestParam(name = "fail", required = false, defaultValue = "false") boolean fail) {
-        return resilienciaService.unstable(fail);
+    public ResponseEntity<String> probarResiliencia(@RequestParam(name = "payload", defaultValue = "Transf_Prueba_CircuitBreaker") String payload) {
+        resilienciaService.enviarTransferenciaReal(payload);
+        return ResponseEntity.ok("Operación de resiliencia ejecutada. Verifique si el CircuitBreaker envió a Kafka o activó el Fallback.");
     }
 
     @PostMapping("/transferencias")
@@ -74,5 +90,4 @@ public class BancoController {
                 "moneda", evento.getMoneda()
         );
     }
-
 }

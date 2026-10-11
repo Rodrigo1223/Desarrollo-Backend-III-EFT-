@@ -1,0 +1,12 @@
+C:\Users\rodri\Documents\Duoc\8_Bimestre_DuocUc\Desarrollo_Backend_III\Sem9\Entrega\Exp3_S9_EFT_Rodrigo_Olavarria\Exp3_S9_Migracion_Batch\src\main\java\com\duoc\migracion\model\TransaccionDiariaEntity.java
+C:\Users\rodri\Documents\Duoc\8_Bimestre_DuocUc\Desarrollo_Backend_III\Sem9\Entrega\Exp3_S9_EFT_Rodrigo_Olavarria\Exp3_S9_Migracion_Batch\src\main\java\com\duoc\migracion\processor\CuentaAnualItemProcessor.java
+C:\Users\rodri\Documents\Duoc\8_Bimestre_DuocUc\Desarrollo_Backend_III\Sem9\Entrega\Exp3_S9_EFT_Rodrigo_Olavarria\Exp3_S9_Migracion_Batch\src\main\java\com\duoc\migracion\processor\EstadoFinancieroAnualItemProcessor.java
+C:\Users\rodri\Documents\Duoc\8_Bimestre_DuocUc\Desarrollo_Backend_III\Sem9\Entrega\Exp3_S9_EFT_Rodrigo_Olavarria\Exp3_S9_Migracion_Batch\src\main\java\com\duoc\migracion\config\TransaccionDiariaBatchConfig.java
+C:\Users\rodri\Documents\Duoc\8_Bimestre_DuocUc\Desarrollo_Backend_III\Sem9\Entrega\Exp3_S9_EFT_Rodrigo_Olavarria\Exp3_S9_Migracion_Batch\src\main\java\com\duoc\migracion\config\CuentaAnualBatchConfig.java
+C:\Users\rodri\Documents\Duoc\8_Bimestre_DuocUc\Desarrollo_Backend_III\Sem9\Entrega\Exp3_S9_EFT_Rodrigo_Olavarria\Exp3_S9_Migracion_Batch\src\main\java\com\duoc\migracion\dto\CuentaAnualCsvDto.java
+C:\Users\rodri\Documents\Duoc\8_Bimestre_DuocUc\Desarrollo_Backend_III\Sem9\Entrega\Exp3_S9_EFT_Rodrigo_Olavarria\Exp3_S9_Migracion_Batch\src\main\java\com\duoc\migracion\dto\TransaccionDiariaCsvDto.java
+C:\Users\rodri\Documents\Duoc\8_Bimestre_DuocUc\Desarrollo_Backend_III\Sem9\Entrega\Exp3_S9_EFT_Rodrigo_Olavarria\Exp3_S9_Migracion_Batch\src\main\java\com\duoc\migracion\model\CuentaAnualEntity.java
+C:\Users\rodri\Documents\Duoc\8_Bimestre_DuocUc\Desarrollo_Backend_III\Sem9\Entrega\Exp3_S9_EFT_Rodrigo_Olavarria\Exp3_S9_Migracion_Batch\src\main\java\com\duoc\migracion\MigracionApplication.java
+C:\Users\rodri\Documents\Duoc\8_Bimestre_DuocUc\Desarrollo_Backend_III\Sem9\Entrega\Exp3_S9_EFT_Rodrigo_Olavarria\Exp3_S9_Migracion_Batch\src\main\java\com\duoc\migracion\processor\TransaccionDiariaItemProcessor.java
+C:\Users\rodri\Documents\Duoc\8_Bimestre_DuocUc\Desarrollo_Backend_III\Sem9\Entrega\Exp3_S9_EFT_Rodrigo_Olavarria\Exp3_S9_Migracion_Batch\src\main\java\com\duoc\migracion\util\DateParserUtil.java
+C:\Users\rodri\Documents\Duoc\8_Bimestre_DuocUc\Desarrollo_Backend_III\Sem9\Entrega\Exp3_S9_EFT_Rodrigo_Olavarria\Exp3_S9_Migracion_Batch\src\main\java\com\duoc\migracion\dto\EstadoFinancieroAnualCsvDto.java

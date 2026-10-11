@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   kafka:
     image: apache/kafka:3.8.0
@@ -84,6 +86,57 @@ services:
         condition: service_started
       config-server:
         condition: service_healthy
+    networks:
+      - banco-net
+
+  batch-service:
+    build: ./Exp3_S9_Migracion_Batch
+    container_name: batch-service
+    ports:
+      - "8083:8083"
+    environment:
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    depends_on:
+      - eureka-server
+    networks:
+      - banco-net
+
+  bff-web:
+    build: ./Exp3_S9_BFF_Web
+    container_name: bff-web
+    ports:
+      - "8084:8084"
+    environment:
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    depends_on:
+      - eureka-server
+      - banco-api
+    networks:
+      - banco-net
+
+  bff-movil:
+    build: ./Exp3_S9_BFF_Movil
+    container_name: bff-movil
+    ports:
+      - "8085:8085"
+    environment:
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    depends_on:
+      - eureka-server
+      - banco-api
+    networks:
+      - banco-net
+
+  bff-cajero:
+    build: ./Exp3_S9_BFF_Cajero
+    container_name: bff-cajero
+    ports:
+      - "8086:8086"
+    environment:
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    depends_on:
+      - eureka-server
+      - banco-api
     networks:
       - banco-net
 

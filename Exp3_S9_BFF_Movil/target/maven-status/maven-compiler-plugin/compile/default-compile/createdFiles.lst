@@ -1,0 +1,4 @@
+com\duoc\bff\dto\MovilResponseDto.class
+com\duoc\bff\client\BackendClient.class
+com\duoc\bff\controller\MovilBffController.class
+com\duoc\bff\BffMovilApplication.class

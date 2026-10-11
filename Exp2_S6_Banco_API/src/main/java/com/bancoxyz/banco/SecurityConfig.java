@@ -4,35 +4,36 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
+import org.springframework.security.web.SecurityFilterChain;
 import javax.crypto.spec.SecretKeySpec;
 
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig {
 
-    @Value("${jwt.secret:esta-es-una-clave-secreta-super-larga-para-el-proyecto-banco-xyz-2026}")
+    @Value("${jwt.secret:12345678901234567890123456789012}") // Clave simétrica de respaldo de al menos 256 bits
     private String jwtSecret;
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtDecoder jwtDecoder) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/banco/health").permitAll()
-                        .requestMatchers("/api/banco/config").authenticated()
-                        .requestMatchers("/api/banco/seguro").authenticated()
-                        .anyRequest().permitAll()
+                        .requestMatchers("/api/banco/health", "/api/banco/config", "/actuator/**").permitAll()
+                        .anyRequest().authenticated()
                 )
-                .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> jwt.decoder(jwtDecoder)));
+                .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> jwt.decoder(jwtDecoder())));
 
         return http.build();
     }
 
     @Bean
     public JwtDecoder jwtDecoder() {
-        SecretKeySpec secretKey = new SecretKeySpec(jwtSecret.getBytes(), "HmacSHA256");
-        return NimbusJwtDecoder.withSecretKey(secretKey).build();
+        // Usamos HMAC-SHA con la clave secreta simétrica configurada
+        SecretKeySpec originalKey = new SecretKeySpec(jwtSecret.getBytes(), "HmacSHA256");
+        return NimbusJwtDecoder.withSecretKey(originalKey).build();
     }
 }

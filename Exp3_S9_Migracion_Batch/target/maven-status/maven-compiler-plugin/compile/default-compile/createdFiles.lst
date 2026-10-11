@@ -1,0 +1,12 @@
+com\duoc\migracion\dto\EstadoFinancieroAnualCsvDto.class
+com\duoc\migracion\dto\CuentaAnualCsvDto.class
+com\duoc\migracion\model\CuentaAnualEntity.class
+com\duoc\migracion\model\TransaccionDiariaEntity.class
+com\duoc\migracion\processor\EstadoFinancieroAnualItemProcessor.class
+com\duoc\migracion\util\DateParserUtil.class
+com\duoc\migracion\MigracionApplication.class
+com\duoc\migracion\config\CuentaAnualBatchConfig.class
+com\duoc\migracion\config\TransaccionDiariaBatchConfig.class
+com\duoc\migracion\processor\CuentaAnualItemProcessor.class
+com\duoc\migracion\processor\TransaccionDiariaItemProcessor.class
+com\duoc\migracion\dto\TransaccionDiariaCsvDto.class

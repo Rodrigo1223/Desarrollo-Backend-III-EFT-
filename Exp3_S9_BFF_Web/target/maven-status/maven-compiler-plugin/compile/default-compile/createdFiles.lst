@@ -1,0 +1,4 @@
+com\duoc\bff\client\BackendClient.class
+com\duoc\bff\controller\WebBffController.class
+com\duoc\bff\BffWebApplication.class
+com\duoc\bff\dto\WebResponseDto.class
